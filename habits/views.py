@@ -9,12 +9,12 @@ from habits.pagination import HabitPagination
 class HabitCreateView(generics.CreateAPIView):
     """ Эндпоинт для создания привычки"""
     serializer_class = HabitsSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 class HabitListView(generics.ListAPIView):
     """ Эндпоинт для вывода списка привычек"""
     serializer_class = HabitsSerializer
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     pagination_class = HabitPagination
 
     def get_queryset(self):
@@ -29,16 +29,16 @@ class HabitRetrieveVIew(generics.RetrieveAPIView):
     """ Эндпоинт для просмотра одной привычки"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
-    permission_classes = [IsAdminUser,IsOwner]
+    # permission_classes = [IsAdminUser,IsOwner]
 
 class HabitUpdateView(generics.UpdateAPIView):
     """ Эндпоинт для обновления или изменения привычки"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
-    permission_classes = [IsAdminUser,IsOwner]
+    # permission_classes = [IsAdminUser,IsOwner]
 
 
 class HabitDestroyView(generics.DestroyAPIView):
     """ Эндпоинт для удаления привычки"""
     queryset = Habits.objects.all()
-    permission_classes = [IsAdminUser,IsOwner]
+    # permission_classes = [IsAdminUser,IsOwner]
