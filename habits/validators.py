@@ -18,8 +18,8 @@ class TimeCompleteValidator:
     def __init__(self,field):
         self.field = field
 
-    def __call__(self,time_to_complete):
-        habit = Habits.objects.filter(time_to_complete=time_to_complete)
+    def __call__(self):
+        habit = Habits.objects.all()
         if habit.time_to_complete > 120:
             raise ValidationError('Время выполнения должно быть не больше 120 секунд')
 
