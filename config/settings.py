@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,21 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8000/']
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000/"]
 CORS_ALLOW_ALL_ORIGINS = False
+
+
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+
+CELERY_TIMEZONE = 'Turkey'
+
+CELERY_TASK_TRACK_STARTED = True
+
+CELERY_BEAT_SCHEDULE = {
+    'check_user': {
+        'task': 'habits.tasks.send_notification',
+        'schedule' : timedelta(minutes=1)
+    }
+}
+
+TOKEN_BOT = os.getenv('TOKEN_BOT')
