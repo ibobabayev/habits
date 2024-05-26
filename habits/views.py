@@ -18,7 +18,7 @@ class HabitCreateView(generics.CreateAPIView):
 class HabitListView(generics.ListAPIView):
     """ Эндпоинт для вывода списка привычек"""
     serializer_class = HabitsSerializer
-    permission_classes = [IsAuthenticated,IsAdminUser,IsOwner]
+    permission_classes = [IsAuthenticated]
     pagination_class = HabitPagination
 
     def get_queryset(self):
@@ -33,23 +33,23 @@ class PublicHabitListView(generics.ListAPIView):
     """ Эндпоинт для вывода списка публичных привычек"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.filter(is_public=True)
-    permission_classes = [IsAuthenticated,IsAdminUser,IsOwner]
+    permission_classes = [IsAuthenticated]
     pagination_class = HabitPagination
 
 class HabitRetrieveVIew(generics.RetrieveAPIView):
     """ Эндпоинт для просмотра одной привычки"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
-    permission_classes = [IsAuthenticated,IsAdminUser,IsOwner]
+    permission_classes = [IsAuthenticated,IsAdminUser | IsOwner]
 
 class HabitUpdateView(generics.UpdateAPIView):
     """ Эндпоинт для обновления или изменения привычки"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
-    permission_classes = [IsAuthenticated,IsAdminUser,IsOwner]
+    permission_classes = [IsAuthenticated,IsAdminUser | IsOwner]
 
 
 class HabitDestroyView(generics.DestroyAPIView):
     """ Эндпоинт для удаления привычки"""
     queryset = Habits.objects.all()
-    permission_classes = [IsAuthenticated,IsAdminUser,IsOwner]
+    permission_classes = [IsAuthenticated,IsAdminUser | IsOwner]
