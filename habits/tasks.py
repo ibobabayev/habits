@@ -17,7 +17,8 @@ def send_notification():
     for habit_item in habit:
         print("Бот запускается")
         if now.time() <= habit_item.time:
+            print("УРАА")
             requests.post(url,
-                          data={"chat_id": habit_item.owner.telegram_nick,
+                          data={"chat_id": habit_item.owner.chat_id,
                                 "text": f'В {habit_item.time} часов вы должны {habit_item.action} в {habit_item.place}'}
                           )
