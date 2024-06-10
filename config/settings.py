@@ -92,6 +92,7 @@ DATABASES = {
         'NAME': 'habits',
         'USER': 'postgres',
         'HOST': '127.0.0.1',
+        'PASSWORD': os.getenv('PASSWORD'),
         'PORT': 5432
     }
 }
