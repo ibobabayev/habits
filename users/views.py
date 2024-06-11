@@ -1,7 +1,7 @@
 from rest_framework import generics
 from users.models import User
 from users.serializer import UserSerializer,CreateUserSerializer
-from rest_framework.permissions import AllowAny , IsAuthenticated , IsAdminUser
+from rest_framework.permissions import AllowAny , IsAdminUser
 from users.permissions import IsOwner
 class UserCreateView(generics.CreateAPIView):
     """ Эндпоинт для регистрации"""

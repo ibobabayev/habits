@@ -5,6 +5,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         user = User.objects.create(
             email = 'admin@ist34',
+            chat_id = 'ibo_babayev',
             is_staff = True,
             is_superuser = True,
         )
